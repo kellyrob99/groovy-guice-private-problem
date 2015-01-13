@@ -6,11 +6,11 @@ import org.junit.Test
 import static org.hamcrest.CoreMatchers.equalTo
 import static org.junit.Assert.assertThat
 
-public class TesterImplTest
+public class TesterCompileStaticImplTest
 {
 
   /**
-   * Fails on v 2.1.8-01 +
+   * Fails on v 2.1.5 and 2.1.8
    */
   @Test
   void testClosurePrivateStaticWithInterceptor() {
@@ -32,9 +32,6 @@ public class TesterImplTest
     assertThat(nonInterceptedSimple().testClosureStatic(), equalTo('hello'))
   }
 
-  /**
-   * Fails on v 2.1.5-03 +
-   */
   @Test
   void testClosurePrivateWithInterceptor() {
     assertThat(interceptedSimple().testClosurePrivate(), equalTo('hello'))
@@ -47,17 +44,17 @@ public class TesterImplTest
   
   @Test
   void testNoGuice() {
-    Tester tester = new TesterImpl()
+    Tester tester = new TesterCompileStaticImpl()
     assertThat(tester.testClosurePrivateStatic(), equalTo('hello'))
     assertThat(tester.testClosurePrivate(), equalTo('hello'))
     assertThat(tester.testClosureStatic(), equalTo('hello'))
   }
 
   private Tester interceptedSimple() {
-    Guice.createInjector(new InterceptorModule(TesterImpl)).getInstance(Tester)
+    Guice.createInjector(new InterceptorModule(TesterCompileStaticImpl)).getInstance(Tester)
   }
 
   private Tester nonInterceptedSimple() {
-    Guice.createInjector(new NonInterceptorModule(TesterImpl)).getInstance(Tester)
+    Guice.createInjector(new NonInterceptorModule(TesterCompileStaticImpl)).getInstance(Tester)
   }
 }

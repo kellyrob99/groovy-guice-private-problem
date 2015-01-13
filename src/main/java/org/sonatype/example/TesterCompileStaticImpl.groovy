@@ -1,12 +1,14 @@
 package org.sonatype.example
 
+import groovy.transform.CompileStatic
+
 import javax.inject.Named
 
 @Named
-class TesterImpl
+@CompileStatic
+class TesterCompileStaticImpl
     implements Tester
 {
-
   @Override
   @InterceptorAnnotation
   String testClosurePrivateStatic() {

@@ -1,0 +1,31 @@
+2.1.5
+  testClosurePrivateWithInterceptor(org.sonatype.example.TesterCompileStaticImplTest): No signature of method: org.sonatype.example.TesterCompileStaticImpl$$EnhancerByGuice$$f1824475.testInternalPrivate() is applicable for argument types: (java.lang.String) values: [hello]
+  testClosurePrivateWithInterceptor(org.sonatype.example.TesterImplTest): No signature of method: org.sonatype.example.TesterImpl$$EnhancerByGuice$$a9e399ce.testInternalPrivate() is applicable for argument types: (java.lang.String) values: [hello]
+org.sonatype.example.TesterCompileStaticImplTest > testClosurePrivateWithInterceptor FAILED
+    groovy.lang.MissingMethodException at TesterCompileStaticImplTest.groovy:40
+
+org.sonatype.example.TesterImplTest > testClosurePrivateWithInterceptor FAILED
+    groovy.lang.MissingMethodException at TesterImplTest.groovy:40
+    
+2.1.8
+  testClosurePrivateWithInterceptor(org.sonatype.example.TesterCompileStaticImplTest): No signature of method: org.sonatype.example.TesterCompileStaticImpl$$EnhancerByGuice$$10131235.testInternalPrivate() is applicable for argument types: (java.lang.String) values: [hello]
+  testClosurePrivateStaticWithInterceptor(org.sonatype.example.TesterImplTest): No signature of method: org.sonatype.example.TesterImpl$$EnhancerByGuice$$c874678e.testInternalPrivateStatic() is applicable for argument types: (java.lang.String) values: [hello]
+  testClosurePrivateWithInterceptor(org.sonatype.example.TesterImplTest): No signature of method: org.sonatype.example.TesterImpl$$EnhancerByGuice$$c874678e.testInternalPrivate() is applicable for argument types: (java.lang.String) values: [hello]
+org.sonatype.example.TesterCompileStaticImplTest > testClosurePrivateWithInterceptor FAILED
+    groovy.lang.MissingMethodException at TesterCompileStaticImplTest.groovy:40
+
+org.sonatype.example.TesterImplTest > testClosurePrivateStaticWithInterceptor FAILED
+    groovy.lang.MissingMethodException at TesterImplTest.groovy:17
+
+org.sonatype.example.TesterImplTest > testClosurePrivateWithInterceptor FAILED
+    groovy.lang.MissingMethodException at TesterImplTest.groovy:40
+    
+2.3.7
+  testClosurePrivateStaticWithInterceptor(org.sonatype.example.TesterImplTest): No signature of method: org.sonatype.example.TesterImpl$$EnhancerByGuice$$61da9517.testInternalPrivateStatic() is applicable for argument types: (java.lang.String) values: [hello]
+  testClosurePrivateWithInterceptor(org.sonatype.example.TesterImplTest): No signature of method: org.sonatype.example.TesterImpl$$EnhancerByGuice$$61da9517.testInternalPrivate() is applicable for argument types: (java.lang.String) values: [hello]
+org.sonatype.example.TesterImplTest > testClosurePrivateStaticWithInterceptor FAILED
+    groovy.lang.MissingMethodException at TesterImplTest.groovy:17
+
+org.sonatype.example.TesterImplTest > testClosurePrivateWithInterceptor FAILED
+    groovy.lang.MissingMethodException at TesterImplTest.groovy:40  
+  
