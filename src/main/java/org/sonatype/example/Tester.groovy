@@ -5,9 +5,7 @@ package org.sonatype.example
  */
 interface Tester
 {
-  public String testPrivateStatic()
   public String testClosurePrivateStatic()
   public String testClosurePrivate()
-  public String testClosure()
-  public String testParentPrivate()
+  public String testClosureStatic()
 }

@@ -1,7 +1,6 @@
 package org.sonatype.example
 
 import com.google.inject.Guice
-import com.google.inject.Injector
 import org.junit.Test
 
 import static org.hamcrest.CoreMatchers.equalTo
@@ -10,16 +9,9 @@ import static org.junit.Assert.assertThat
 public class TesterImplTest
 {
 
-  @Test
-  void testPrivateStaticWithInterceptor() {
-    assertThat(interceptedSimple().testPrivateStatic(), equalTo('hello'))
-  }
-
-  @Test
-  void testPrivateStaticWithoutInterceptor() {
-    assertThat(nonInterceptedSimple().testPrivateStatic(), equalTo('hello'))
-  }
-
+  /**
+   * Fails on v 2.1.8-01 +
+   */
   @Test
   void testClosurePrivateStaticWithInterceptor() {
     assertThat(interceptedSimple().testClosurePrivateStatic(), equalTo('hello'))
@@ -32,45 +24,40 @@ public class TesterImplTest
 
   @Test
   void testClosureStaticWithInterceptor() {
-    assertThat(interceptedSimple().testClosure(), equalTo('hello'))
+    assertThat(interceptedSimple().testClosureStatic(), equalTo('hello'))
   }
 
   @Test
   void testClosureStaticWithoutInterceptor() {
-    assertThat(nonInterceptedSimple().testClosure(), equalTo('hello'))
+    assertThat(nonInterceptedSimple().testClosureStatic(), equalTo('hello'))
+  }
+
+  /**
+   * Fails on v 2.1.5-03 +
+   */
+  @Test
+  void testClosurePrivateWithInterceptor() {
+    assertThat(interceptedSimple().testClosurePrivate(), equalTo('hello'))
   }
 
   @Test
-  void testClosureWithInterceptor() {
-    assertThat(interceptedSimple().testClosure(), equalTo('hello'))
-  }
-
-  @Test
-  void testClosureWithoutInterceptor() {
-    assertThat(nonInterceptedSimple().testClosure(), equalTo('hello'))
-  }
-
-  @Test
-  void testParentPrivate() {
-    assertThat(nonInterceptedSimple().testParentPrivate(), equalTo('hello'))
+  void testClosurePrivateWithoutInterceptor() {
+    assertThat(nonInterceptedSimple().testClosurePrivate(), equalTo('hello'))
   }
   
   @Test
   void testNoGuice() {
-    assertThat(new TesterImpl().testClosurePrivateStatic(), equalTo('hello'))
-    assertThat(new TesterImpl().testClosurePrivate(), equalTo('hello'))
-    assertThat(new TesterImpl().testPrivateStatic(), equalTo('hello'))
-    assertThat(new TesterImpl().testClosure(), equalTo('hello'))
+    Tester tester = new TesterImpl()
+    assertThat(tester.testClosurePrivateStatic(), equalTo('hello'))
+    assertThat(tester.testClosurePrivate(), equalTo('hello'))
+    assertThat(tester.testClosureStatic(), equalTo('hello'))
   }
 
   private Tester interceptedSimple() {
-    Injector injector = Guice.createInjector(new InterceptorModule());
-    injector.getInstance(Tester)
+    Guice.createInjector(new InterceptorModule(TesterImpl)).getInstance(Tester)
   }
 
   private Tester nonInterceptedSimple() {
-    Injector injector = Guice.createInjector(new NonInterceptorModule());
-    def simple = injector.getInstance(Tester)
-    simple
+    Guice.createInjector(new NonInterceptorModule(TesterImpl)).getInstance(Tester)
   }
 }

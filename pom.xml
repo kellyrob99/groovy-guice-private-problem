@@ -7,26 +7,7 @@
   <groupId>org.sonatype</groupId>
   <artifactId>groovy-guice-private-problem</artifactId>
   <version>1.0-SNAPSHOT</version>
-
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.sonatype.nexus.buildsupport</groupId>
-        <artifactId>nexus-buildsupport-groovy</artifactId>
-        <type>pom</type>
-        <version>3.0.0-SNAPSHOT</version>
-        <scope>import</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.sonatype.nexus.buildsupport</groupId>
-        <artifactId>nexus-buildsupport-guice</artifactId>
-        <type>pom</type>
-        <version>3.0.0-SNAPSHOT</version>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
-
+  
   <dependencies>
     <dependency>
       <groupId>org.codehaus.groovy</groupId>
@@ -34,12 +15,34 @@
       <version>2.1.8</version>
     </dependency>
     <dependency>
-      <groupId>javax.inject</groupId>
-      <artifactId>javax.inject</artifactId>
+      <groupId>com.google.inject</groupId>
+      <artifactId>guice</artifactId>
+      <version>3.0</version>
     </dependency>
     <dependency>
-      <groupId>org.sonatype.sisu</groupId>
-      <artifactId>sisu-guice</artifactId>
+      <groupId>javax.inject</groupId>
+      <artifactId>javax.inject</artifactId>
+      <version>1</version>
+    </dependency>
+    <dependency>
+      <groupId>aopalliance</groupId>
+      <artifactId>aopalliance</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>16.0.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.ow2.asm</groupId>
+      <artifactId>asm</artifactId>
+      <version>5.0.3</version>
+    </dependency>
+    <dependency>
+      <groupId>cglib</groupId>
+      <artifactId>cglib</artifactId>
+      <version>3.1</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
@@ -60,6 +63,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.1</version>
           <dependencies>
             <dependency>
               <groupId>org.codehaus.groovy</groupId>
@@ -84,13 +88,21 @@
 
   <profiles>
     <profile>
-      <id>working</id>
+      <id>2_1_5</id>
+      <dependencies>
+        <dependency>
+          <groupId>org.codehaus.groovy</groupId>
+          <artifactId>groovy-all</artifactId>
+          <version>2.1.5</version>
+        </dependency>
+      </dependencies>
       <build>
         <pluginManagement>
           <plugins>
             <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-compiler-plugin</artifactId>
+              <version>3.1</version>
               <dependencies>
                 <dependency>
                   <groupId>org.codehaus.groovy</groupId>
@@ -104,12 +116,13 @@
       </build>
     </profile>
     <profile>
+      <!-- this is the configuration we want to upgrade to -->
       <id>latest</id>
       <dependencies>
         <dependency>
           <groupId>org.codehaus.groovy</groupId>
           <artifactId>groovy-all</artifactId>
-          <version>2.3.9</version>
+          <version>2.3.7</version>
         </dependency>
       </dependencies>
       <build>
@@ -118,6 +131,7 @@
             <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-compiler-plugin</artifactId>
+              <version>3.1</version>
               <dependencies>
                 <dependency>
                   <groupId>org.codehaus.groovy</groupId>
