@@ -10,7 +10,7 @@ public class TesterCompileStaticImplTest
 {
 
   /**
-   * Fails on v 2.1.8-01 +
+   * Fails on v 2.1.5 and 2.1.8
    */
   @Test
   void testClosurePrivateStaticWithInterceptor() {
@@ -32,9 +32,6 @@ public class TesterCompileStaticImplTest
     assertThat(nonInterceptedSimple().testClosureStatic(), equalTo('hello'))
   }
 
-  /**
-   * Fails on v 2.1.5-03 +
-   */
   @Test
   void testClosurePrivateWithInterceptor() {
     assertThat(interceptedSimple().testClosurePrivate(), equalTo('hello'))
