@@ -4,9 +4,6 @@ import groovy.transform.CompileStatic
 
 import javax.inject.Named
 
-/**
- * Created by krobinson on 2015-01-11.
- */
 @Named
 @CompileStatic
 class TesterCompileStaticImpl

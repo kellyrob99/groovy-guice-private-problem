@@ -2,9 +2,6 @@ package org.sonatype.example
 
 import javax.inject.Named
 
-/**
- * Created by krobinson on 2015-01-11.
- */
 @Named
 class TesterImpl
     implements Tester
